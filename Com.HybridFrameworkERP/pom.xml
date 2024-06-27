@@ -24,6 +24,18 @@
                 
                 <configuration>
                 
+                  <source>1.8.0</source>
+            <target>1.8.0</target>
+            <annotationProcessorPaths>
+                <path>
+                    <groupId>org.projectlombok</groupId>
+                    <artifactId>lombok</artifactId>
+                
+                
+                   <version>1.18.22</version> <!-- Ensure this version is compatible -->
+                </path>
+            </annotationProcessorPaths>
+                
                 
                 
                 
