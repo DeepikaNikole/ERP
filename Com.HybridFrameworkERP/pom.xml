@@ -37,8 +37,54 @@
 					</suiteXmlFiles>
 				</configuration>
 			</plugin>
+	
+	
+	
+	
+	
+	 <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>3.13.0</version> <!-- Update to the latest version -->
+            <configuration>
+                <source>1.8</source> <!-- Specify your Java version -->
+                <target>1.8</target> <!-- Specify your Java version -->
+                <compilerArgs>
+                    <arg>-XDsuppressNotes</arg>
+                </compilerArgs>
+            </configuration>
+        </plugin>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 		</plugins>
+		
+		
+		
+		
+		
+		
+		
 	</build>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 	<dependencies>
 		<dependency>
