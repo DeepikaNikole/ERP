@@ -1,5 +1,7 @@
 package com.pages;
 
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -25,6 +27,11 @@ public class Login {
 	
 	@FindBy(xpath="//input[@type='submit']")
 	WebElement loginBtn;
+	
+	
+	
+	@FindBy(id = "favourites")
+    WebElement themeDropdown;
 	
 	public DashBoardPage validLogin() {
 //		username.sendKeys("admin");
@@ -63,6 +70,22 @@ public class Login {
 username.sendKeys(uname);
 password.sendKeys(pass);
 loginBtn.click();
+
+
+	}
+// Method to select a theme using JavaScript
+
+public void selectTheme(String theme) {
+    String script = "arguments[0].value='" + theme + "';";
+    ((JavascriptExecutor) driver).executeScript(script, themeDropdown);
+    themeDropdown.sendKeys(Keys.ENTER);
+}
+
+// Usage example
+public void testThemeSelection() {
+    Login loginPage = new Login(driver);
+    loginPage.selectTheme("arc-dark");
+    // Proceed with other actions/assertions
 }
 }
 

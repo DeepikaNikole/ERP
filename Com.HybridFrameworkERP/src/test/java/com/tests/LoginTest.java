@@ -1,7 +1,9 @@
 package com.tests;
 
+import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.SkipException;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 
@@ -9,6 +11,7 @@ import com.base.BaseClass;
 import com.pages.Customerpage;
 import com.pages.DashBoardPage;
 import com.pages.Login;
+import com.utilities.DriverUtils;
 
 
 public class LoginTest extends BaseClass{
@@ -85,5 +88,23 @@ public class LoginTest extends BaseClass{
 	public void test03 ()throws Exception {
 		cp.addCustomer();
 		Assert.assertTrue(cp.verifySuccessMsg());
+  //DriverUtils.waitForElement(driver.findElement(By.xpath("//title[contains(text(),'Expected Title After Click')]")));
+		
 	}
+	
+
+    @Test(priority = 4)
+    public void testSelectTheme() {
+        // Select a theme from the dropdown
+        lp.selectTheme("arc-dark");
+
+}
+    
+    @AfterClass
+    public void teardown() {
+        // Close the browser
+        if (driver != null) {
+            driver.quit();
+        }
+}
 }

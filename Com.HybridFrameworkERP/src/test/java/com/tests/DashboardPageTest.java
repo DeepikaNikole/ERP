@@ -20,6 +20,7 @@ public class DashboardPageTest extends BaseClass{
 		initialization();
 		reportInit();
 		dp= new DashBoardPage(driver);
+		lp= new Login(driver);
 	}
 	
 	
