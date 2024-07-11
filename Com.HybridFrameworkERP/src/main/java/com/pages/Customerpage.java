@@ -100,14 +100,32 @@ public void addCustomer() throws Exception {
         String branchNameValue = ExcelUtils.readCelData(sheetIndex, 3);
         String branchContactValue = ExcelUtils.readCelData(sheetIndex, 4);
 
-        DriverUtils.waitForElement(custCode);
+//        DriverUtils.waitForElement(custCode);
+//        custCode.sendKeys(custCodeValue);
+//
+//        custName.sendKeys(custNameValue);
+//        custAddress.sendKeys(custAddressValue);
+//        submitBtn.click();
+//
+//        DriverUtils.waitForElement(branchName);
+//        branchName.clear();
+//        branchName.sendKeys(branchNameValue);
+//        branchcontect.sendKeys(branchContactValue);
+//        updateBtn.click();
+        
+        
+        
+        
+        
+        DriverUtils.waitForElement(driver, custCode);
         custCode.sendKeys(custCodeValue);
 
         custName.sendKeys(custNameValue);
         custAddress.sendKeys(custAddressValue);
         submitBtn.click();
 
-        DriverUtils.waitForElement(branchName);
+        // Wait for branch name form and perform actions
+        DriverUtils.waitForElement(driver, branchName);
         branchName.clear();
         branchName.sendKeys(branchNameValue);
         branchcontect.sendKeys(branchContactValue);

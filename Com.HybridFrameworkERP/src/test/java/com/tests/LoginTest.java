@@ -1,6 +1,9 @@
 package com.tests;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.SkipException;
 import org.testng.annotations.AfterClass;
@@ -84,13 +87,30 @@ public class LoginTest extends BaseClass{
 //	}
 	
 	
+	//@Test
+//	public void test03 ()throws Exception {
+//		cp.addCustomer();
+//		Assert.assertTrue(cp.verifySuccessMsg());
+//  //DriverUtils.waitForElement(driver.findElement(By.xpath("//title[contains(text(),'Expected Title After Click')]")));
+//		
+	
 	@Test
-	public void test03 ()throws Exception {
-		cp.addCustomer();
-		Assert.assertTrue(cp.verifySuccessMsg());
-  //DriverUtils.waitForElement(driver.findElement(By.xpath("//title[contains(text(),'Expected Title After Click')]")));
-		
-	}
+	public void test03() throws Exception {
+	    cp.addCustomer();
+	    Assert.assertTrue(cp.verifySuccessMsg());
+
+	    WebDriverWait wait = new WebDriverWait(driver, 30);
+        WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("BrName")));
+        // Proceed with assertions or actions on 'element' as needed
+
+        // Alternatively, using your utility method
+        DriverUtils.waitForElement(driver, element);
+        // Proceed with assertions or actions on 'element' as needed
+    }
+
+	
+
+	
 	
 
     @Test(priority = 4)
@@ -100,11 +120,12 @@ public class LoginTest extends BaseClass{
 
 }
     
-    @AfterClass
-    public void teardown() {
-        // Close the browser
-        if (driver != null) {
-            driver.quit();
-        }
-}
+//    @AfterClass
+//    public void teardown() {
+//        // Close the browser
+//        if (driver != null) {
+//            driver.quit();
+//        }
+
+
 }

@@ -10,6 +10,12 @@
       <class name="com.tests.LoginTest"/>
       <class name="com.tests.DashboardPageTest"></class>
       <class name="com.tests.HomePageTest"></class>
+      
+      <class name="com.tests.LogoutTest"/>
+      
+      
+      <class name="com.tests.CommonlyusedSecriptTest"/>
+      
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->

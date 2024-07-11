@@ -37,10 +37,20 @@ public class DashBoardPage {
     WebElement addCustomer;
  
  public Customerpage  clickAddCustomer() {
-	 DriverUtils.waitForElement(Receivables);// wait foe recivable
-	 Receivables.click();
-	 DriverUtils.waitForElement(addCustomer);
-	 addCustomer.click();
+//	 DriverUtils.waitForElement(Receivables);// wait foe recivable
+//	 Receivables.click();
+//	 DriverUtils.waitForElement(addCustomer);
+//	 addCustomer.click();
+	 
+	 WebElement Receivables = driver.findElement(By.id("receivablesId"));
+     WebElement addCustomer = driver.findElement(By.id("addCustomerId"));
+
+     // Wait for Receivables to be visible and then click it
+     DriverUtils.waitForElement(driver, Receivables);
+     Receivables.click();
+     
+     DriverUtils.waitForElement(driver, addCustomer);
+     addCustomer.click();
 	 return new Customerpage(driver);
  }
     

@@ -3,6 +3,7 @@ package com.tests;
 import java.util.ArrayList;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.SkipException;
 import org.testng.annotations.AfterMethod;
@@ -63,8 +64,14 @@ public class HomePageTest extends BaseClass {
         hp.clickModuleByName("Sales"); // Assuming this method navigates to a new page
 
         // Wait for the expected title to be visible
-        DriverUtils.waitForElement(driver.findElement(By.xpath("//title[contains(text(),'Expected Title After Click')]")));
+       // DriverUtils.waitForElement(driver.findElement(By.xpath("//title[contains(text(),'Expected Title After Click')]")));
 
+        // Locate the <title> element after clicking "Sales" module
+        WebElement titleElement = driver.findElement(By.xpath("//title[contains(text(),'Expected Title After Click')]"));
+
+        // Wait for the title element to be visible
+        DriverUtils.waitForElement(driver, titleElement);
+        
         String actualTitle = driver.getTitle();
         String expectedTitle = "Expected Title After Click";
         Assert.assertEquals(actualTitle, expectedTitle, "Title after clicking module does not match!");

@@ -6,6 +6,7 @@ import java.io.IOException;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -30,10 +31,16 @@ public class DriverUtils extends BaseClass{
 		
 	}
 	// all  webelelment wait method
-	public static void waitForElement(WebElement element)
-{
-		WebDriverWait wait = new WebDriverWait(driver, 30); 
-		wait.until(ExpectedConditions.visibilityOf(element));
-		
-		}
+//	public static void waitForElement(WebDriver driver, WebElement element)
+//{
+//		WebDriverWait wait = new WebDriverWait(driver, 30); 
+//		wait.until(ExpectedConditions.visibilityOf(element));
+//		
+//		}
+	
+	public static void waitForElement(WebDriver driver, WebElement element) {
+	    WebDriverWait wait = new WebDriverWait(driver, 30);
+	    wait.until(ExpectedConditions.visibilityOf(element));
+	}
+
 }
