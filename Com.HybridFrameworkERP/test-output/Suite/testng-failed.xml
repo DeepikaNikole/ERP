@@ -6,19 +6,48 @@
   </listeners>
   <test thread-count="5" name="Test(failed)">
     <classes>
-      <class name="com.tests.LoginTest">
-        <methods>
-          <include name="setup"/>
-          <include name="test03"/>
-        </methods>
-      </class> <!-- com.tests.LoginTest -->
       <class name="com.tests.DashboardPageTest">
         <methods>
           <include name="test03"/>
+          <include name="test02"/>
           <include name="test01"/>
           <include name="setup"/>
         </methods>
       </class> <!-- com.tests.DashboardPageTest -->
+      <class name="com.tests.HomePageTest">
+        <methods>
+          <include name="tearDown"/>
+          <include name="testLogin"/>
+          <include name="setup"/>
+          <include name="testSkipExample"/>
+          <include name="testModuleDetails"/>
+          <include name="testClickModule"/>
+        </methods>
+      </class> <!-- com.tests.HomePageTest -->
+      <class name="com.tests.LogoutTest">
+        <methods>
+          <include name="test01"/>
+          <include name="logoutAfterTest"/>
+          <include name="setup"/>
+        </methods>
+      </class> <!-- com.tests.LogoutTest -->
+      <class name="com.tests.CommonlyusedSecriptTest">
+        <methods>
+          <include name="setup"/>
+          <include name="testAddCustomer"/>
+          <include name="testNavigateToCommonScripts"/>
+          <include name="testValidLogin"/>
+        </methods>
+      </class> <!-- com.tests.CommonlyusedSecriptTest -->
+      <class name="com.tests.LoginTest">
+        <methods>
+          <include name="setup"/>
+          <include name="test03"/>
+          <include name="test01"/>
+          <include name="testSelectTheme"/>
+          <include name="test02"/>
+        </methods>
+      </class> <!-- com.tests.LoginTest -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->
