@@ -77,6 +77,13 @@ public class MyListeners extends BaseClass implements ITestListener {
         extentTest.get().log(Status.SKIP, "Testcase skipped with name: " + result.getName());
     }
 
+    
+    @Override
+	public void onTestFailedButWithinSuccessPercentage(ITestResult result) {
+		// TODO Auto-generated method stub
+		
+	}
+    
     @Override
     public void onStart(ITestContext context) {
         // Initialization if needed
@@ -89,9 +96,5 @@ public class MyListeners extends BaseClass implements ITestListener {
         }
     }
 
-	@Override
-	public void onTestFailedButWithinSuccessPercentage(ITestResult result) {
-		// TODO Auto-generated method stub
-		
-	}
+	
 }

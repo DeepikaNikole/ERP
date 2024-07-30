@@ -6,6 +6,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import com.utilities.DriverUtils;
+
 public class LogoutPage {
     WebDriver driver;
 
@@ -21,6 +23,7 @@ public class LogoutPage {
 
     // Method to perform logout action
     public void performLogout() {
+    	DriverUtils.waitForElement(driver, logoutButton);
         logoutButton.click();
         
         Alert alert = driver.switchTo().alert();

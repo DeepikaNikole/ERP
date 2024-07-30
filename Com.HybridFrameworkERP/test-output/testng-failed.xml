@@ -1,19 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
-  <listeners>
-    <listener class-name="com.listeners.MyListeners"/>
-  </listeners>
-  <test thread-count="5" name="Test(failed)">
+<suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
+  <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.tests.DashboardPageTest">
-        <methods>
-          <include name="test03"/>
-          <include name="test02"/>
-          <include name="test01"/>
-          <include name="setup"/>
-        </methods>
-      </class> <!-- com.tests.DashboardPageTest -->
       <class name="com.tests.HomePageTest">
         <methods>
           <include name="tearDown"/>
@@ -24,30 +13,6 @@
           <include name="testClickModule"/>
         </methods>
       </class> <!-- com.tests.HomePageTest -->
-      <class name="com.tests.LogoutTest">
-        <methods>
-          <include name="test01"/>
-          <include name="logoutAfterTest"/>
-          <include name="setup"/>
-        </methods>
-      </class> <!-- com.tests.LogoutTest -->
-      <class name="com.tests.CommonlyusedSecriptTest">
-        <methods>
-          <include name="setup"/>
-          <include name="testAddCustomer"/>
-          <include name="testNavigateToCommonScripts"/>
-          <include name="testValidLogin"/>
-        </methods>
-      </class> <!-- com.tests.CommonlyusedSecriptTest -->
-      <class name="com.tests.LoginTest">
-        <methods>
-          <include name="setup"/>
-          <include name="test03"/>
-          <include name="test01"/>
-          <include name="testSelectTheme"/>
-          <include name="test02"/>
-        </methods>
-      </class> <!-- com.tests.LoginTest -->
     </classes>
-  </test> <!-- Test(failed) -->
-</suite> <!-- Failed suite [Suite] -->
+  </test> <!-- Default test(failed) -->
+</suite> <!-- Failed suite [Default suite] -->

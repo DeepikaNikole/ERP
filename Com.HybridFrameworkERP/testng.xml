@@ -5,16 +5,16 @@
 <listeners>
 		<listener class-name="com.listeners.MyListeners" />
 	</listeners>
-  <test thread-count="5" name="Test">
+  <test thread-count="20" name="Test">
     <classes>
       <class name="com.tests.LoginTest"/>
       <class name="com.tests.DashboardPageTest"></class>
       <class name="com.tests.HomePageTest"></class>
       
-      <class name="com.tests.LogoutTest"/>
+      <class name="com.tests.LogoutTest"></class>
       
       
-      <class name="com.tests.CommonlyusedSecriptTest"/>
+      <class name="com.tests.CommonlyusedSecriptTest"></class>
       
     </classes>
   </test> <!-- Test -->

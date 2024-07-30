@@ -1,15 +1,16 @@
 package com.tests;
 
 import java.util.ArrayList;
-
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.TimeoutException;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.SkipException;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-
 import com.base.BaseClass;
 import com.pages.HomePage;
 import com.pages.Login;
@@ -37,45 +38,49 @@ public class HomePageTest extends BaseClass {
         Assert.assertEquals(actualTitle, expectedTitle, "Title does not match after login!");
     }
 
-    @Test(priority = 2)
+    @Test(priority = 2, dependsOnMethods = "testLogin")
     public void testModuleDetails() {
         System.out.println("Starting module details test");
-        ArrayList<String> modules = hp.getModules();
-        Assert.assertFalse(modules.isEmpty(), "Module details are empty!");
-        for (String moduleDetail : modules) {
-            System.out.println(moduleDetail);
+
+        try {
+            // Wait for the navigation bar to be visible
+            DriverUtils.waitForElement(driver, hp.getNav());
+
+            ArrayList<String> modules = hp.getModules();
+            Assert.assertFalse(modules.isEmpty(), "Module details are empty!");
+
+            for (String moduleDetail : modules) {
+                System.out.println(moduleDetail);
+            }
+        } catch (TimeoutException te) {
+            te.printStackTrace();
+            Assert.fail("TimeoutException: Element not found within the specified time: " + te.getMessage());
+        } catch (NoSuchElementException nsee) {
+            nsee.printStackTrace();
+            Assert.fail("NoSuchElementException: Element not found: " + nsee.getMessage());
+        } catch (Exception e) {
+            e.printStackTrace();
+            Assert.fail("Test failed due to exception: " + e.getMessage());
         }
     }
 
-//    @Test(priority = 3)
-//    public void testClickModule() {
-//        System.out.println("Starting click module test");
-//        hp.clickModuleByName("Sales"); // Example method from HomePage
-//        String actualTitle = driver.getTitle();
-//        String expectedTitle = "Expected Title After Click";
-//        Assert.assertEquals(actualTitle, expectedTitle, "Title after clicking module does not match!");
-//    }
-
-    
-    
-    @Test(priority = 3)
+    @Test(priority = 3, dependsOnMethods = "testLogin")
     public void testClickModule() {
         System.out.println("Starting click module test");
-        hp.clickModuleByName("Sales"); // Assuming this method navigates to a new page
 
-        // Wait for the expected title to be visible
-       // DriverUtils.waitForElement(driver.findElement(By.xpath("//title[contains(text(),'Expected Title After Click')]")));
+        // Wait for the navigation bar to be visible
+        DriverUtils.waitForElement(driver, hp.getNav());
 
-        // Locate the <title> element after clicking "Sales" module
-        WebElement titleElement = driver.findElement(By.xpath("//title[contains(text(),'Expected Title After Click')]"));
+        hp.clickModuleByName("Sales"); // Example method from HomePage
 
-        // Wait for the title element to be visible
-        DriverUtils.waitForElement(driver, titleElement);
-        
+        // Wait for the expected title to appear
+        new WebDriverWait(driver, 30).until(ExpectedConditions.titleIs("Expected Title After Click"));
+
         String actualTitle = driver.getTitle();
-        String expectedTitle = "Expected Title After Click";
+        String expectedTitle = "Expected Title After Click"; // Adjust the expected title accordingly
         Assert.assertEquals(actualTitle, expectedTitle, "Title after clicking module does not match!");
     }
+
     @Test(priority = 4)
     public void testSkipExample() {
         System.out.println("Starting skip example test");
@@ -85,7 +90,7 @@ public class HomePageTest extends BaseClass {
     @AfterMethod
     public void tearDown() {
         if (driver != null) {
-            driver.quit(); 
+            driver.quit();
         }
     }
 }

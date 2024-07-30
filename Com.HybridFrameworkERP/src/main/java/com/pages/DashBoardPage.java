@@ -28,33 +28,48 @@ public class DashBoardPage {
          PageFactory.initElements(driver, this);
      }
 
-    @FindBy(linkText = "Receivables") // recivable module 
-    
-    WebElement Receivables;
-    
- @FindBy(xpath = "//a[@href='/Projects/WEBERP/Customers.php']")
-    
-    WebElement addCustomer;
- 
- public Customerpage  clickAddCustomer() {
-//	 DriverUtils.waitForElement(Receivables);// wait foe recivable
+//    @FindBy(linkText = "Receivables") // recivable module 
+//    
+//    WebElement Receivables;
+//    
+// @FindBy(xpath = "//a[@href='/Projects/WEBERP/Customers.php']")
+//    
+//    WebElement addCustomer;
+// 
+// public Customerpage  clickAddCustomer() {
+// DriverUtils.waitForElement(driver, Receivables);// wait foe recivable
 //	 Receivables.click();
-//	 DriverUtils.waitForElement(addCustomer);
+// DriverUtils.waitForElement(driver, Receivables);
 //	 addCustomer.click();
-	 
-	 WebElement Receivables = driver.findElement(By.id("receivablesId"));
-     WebElement addCustomer = driver.findElement(By.id("addCustomerId"));
+//	 
+////	 WebElement Receivables = driver.findElement(By.id("receivablesId"));
+////     WebElement addCustomer = driver.findElement(By.id("addCustomerId"));
+//
+//     // Wait for Receivables to be visible and then click it
+////     DriverUtils.waitForElement(driver, Receivables);
+////     Receivables.click();
+////     
+////     DriverUtils.waitForElement(driver, addCustomer);
+////     addCustomer.click();
+//	 return new Customerpage(driver);
+// }
+//    
 
-     // Wait for Receivables to be visible and then click it
-     DriverUtils.waitForElement(driver, Receivables);
-     Receivables.click();
-     
-     DriverUtils.waitForElement(driver, addCustomer);
-     addCustomer.click();
-	 return new Customerpage(driver);
- }
-    
+    @FindBy(linkText = "Receivables")
+    WebElement receivables;
+
+    @FindBy(xpath = "//a[@href='/Projects/WEBERP/Customers.php']")
+    WebElement addCustomer;
+
+    public Customerpage clickAddCustomer() {
+        DriverUtils.waitForElement(driver, receivables);
+        receivables.click();
+        DriverUtils.waitForElement(driver, addCustomer);
+        addCustomer.click();
+        return new Customerpage(driver);
+    }
 }
+//}
 
 	
 //

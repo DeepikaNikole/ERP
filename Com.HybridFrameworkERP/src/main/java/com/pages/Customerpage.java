@@ -70,71 +70,82 @@ WebElement sucessMsg;
 
 
 
+//old code
+//
 //public void addCustomer() throws Exception {
-//	DriverUtils.waitForElement(custCode);
+//	DriverUtils.waitForElement(driver, custCode);
 //	custCode.sendKeys(ExcelUtils.readCelData(2, 0));
-//	
+////	
 //	custName.sendKeys(ExcelUtils.readCelData(2, 1));
 //	custAddress.sendKeys(ExcelUtils.readCelData(2, 2));
 //	submitBtn.click();
-//
+////
 //	
-//	DriverUtils.waitForElement(branchName);
+//	DriverUtils.waitForElement(driver, branchName);;
 //	branchName.clear();
 //	branchName.sendKeys(ExcelUtils.readCelData(2, 3));;
 //	branchcontect.sendKeys(ExcelUtils.readCelData(2, 4));;
 //	updateBtn.click(); 
-//
+////
 //
 //}
 
 
 
+
+
 public void addCustomer() throws Exception {
-    int[] sheetIndices = {1, 2, 3};  // Example sheet indices to iterate over
+DriverUtils.waitForElement(driver, branchName);
+   int[] sheetIndices = {1, 2, 3}; 
+  DriverUtils.waitForElement(driver, branchName);
+   for (int sheetIndex : sheetIndices) {
+       String custCodeValue = ExcelUtils.readCelData(sheetIndex, 0);
+       String custNameValue = ExcelUtils.readCelData(sheetIndex, 1);
+       String custAddressValue = ExcelUtils.readCelData(sheetIndex, 2);
+       String branchNameValue = ExcelUtils.readCelData(sheetIndex, 3);
+      String branchContactValue = ExcelUtils.readCelData(sheetIndex, 4);
 
-    for (int sheetIndex : sheetIndices) {
-        String custCodeValue = ExcelUtils.readCelData(sheetIndex, 0);
-        String custNameValue = ExcelUtils.readCelData(sheetIndex, 1);
-        String custAddressValue = ExcelUtils.readCelData(sheetIndex, 2);
-        String branchNameValue = ExcelUtils.readCelData(sheetIndex, 3);
-        String branchContactValue = ExcelUtils.readCelData(sheetIndex, 4);
+      DriverUtils.waitForElement(driver, custCode);
+       custCode.sendKeys(custCodeValue);
+//
+   custName.sendKeys(custNameValue);
+     custAddress.sendKeys(custAddressValue);
+      submitBtn.click();
 
-//        DriverUtils.waitForElement(custCode);
+       DriverUtils.waitForElement(driver, branchName);
+      branchName.clear();
+     branchName.sendKeys(branchNameValue);
+      branchcontect.sendKeys(branchContactValue);
+      updateBtn.click();
+   } 
+        
+   }  
+        
+        
+      //  DriverUtils.waitForElement(driver, custCode);
 //        custCode.sendKeys(custCodeValue);
 //
 //        custName.sendKeys(custNameValue);
 //        custAddress.sendKeys(custAddressValue);
 //        submitBtn.click();
 //
-//        DriverUtils.waitForElement(branchName);
+//        // Wait for branch name form and perform actions
+//        DriverUtils.waitForElement(driver, branchName);
 //        branchName.clear();
 //        branchName.sendKeys(branchNameValue);
 //        branchcontect.sendKeys(branchContactValue);
+//        
+//
+//        DriverUtils.waitForElement(driver, updateBtn);
 //        updateBtn.click();
-        
-        
-        
-        
-        
-        DriverUtils.waitForElement(driver, custCode);
-        custCode.sendKeys(custCodeValue);
-
-        custName.sendKeys(custNameValue);
-        custAddress.sendKeys(custAddressValue);
-        submitBtn.click();
-
-        // Wait for branch name form and perform actions
-        DriverUtils.waitForElement(driver, branchName);
-        branchName.clear();
-        branchName.sendKeys(branchNameValue);
-        branchcontect.sendKeys(branchContactValue);
-        updateBtn.click();
+       // DriverUtils.waitForElement(driver, branchName);
 
         // Optionally add a delay or additional logic between iterations
-        Thread.sleep(1000); // Example: 1 second delay between iterations
-    }
-}
+//        Thread.sleep(1000); // Example: 1 second delay between iterations
+//    }
+//}
+
+
 
 
 
